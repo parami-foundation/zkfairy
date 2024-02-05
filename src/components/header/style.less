@@ -1,0 +1,163 @@
+.headerContainer {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  width: 100%;
+  background: linear-gradient(270.03deg, #18192f 0.04%, #3178c7 104.63%);
+  overflow: hidden;
+
+  .headerWrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    max-width: 1440px;
+
+    .headerLeft {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: center;
+
+      .headerLogo {
+        height: 60px;
+
+        .headerLogoImg {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+
+      .headerNavContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-start;
+        align-items: center;
+        margin-left: 70px;
+
+        .headerNavItem {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          margin: 0 30px;
+          color: #fff;
+          font-size: 20px;
+          font-weight: 400;
+          font-family: "Jockey One";
+          text-decoration: none;
+          line-height: 30.76px;
+          transition: 0.3s;
+          cursor: pointer;
+
+          &:hover {
+            color: #fff1d1;
+          }
+        }
+
+        .headerNavItemActive {
+          position: relative;
+          color: #fff1d1;
+
+          &::before {
+            content: "";
+            position: absolute;
+            top: 15%;
+            left: -70%;
+            width: 70%;
+            height: 80%;
+            background: url("@/assets/home/navActive.png") no-repeat;
+            background-size: 100% 100%;
+            background-position: center;
+            transform: rotateY(180deg);
+            transition: all 0.3s;
+          }
+
+          &::after {
+            content: "";
+            position: absolute;
+            top: 15%;
+            right: -70%;
+            width: 70%;
+            height: 80%;
+            background: url("@/assets/home/navActive.png") no-repeat;
+            background-size: 100% 100%;
+            background-position: center;
+            transition: all 0.3s;
+          }
+        }
+      }
+    }
+
+    .headerRight {
+      display: flex;
+      flex-direction: row;
+      justify-content: flex-end;
+      align-items: center;
+
+      .connectWallet {
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        transition: all 0.3s;
+        margin: 0 100px;
+        cursor: pointer;
+
+        &::after {
+          content: "";
+          position: absolute;
+          top: -165%;
+          left: -80%;
+          width: 260%;
+          height: 460%;
+          background: url("@/assets/connectWallet.png") no-repeat;
+          background-size: 100% 100%;
+          background-position: center;
+          transition: all 0.3s;
+        }
+
+        span {
+          font-family: "Jockey One";
+          font-size: 20px;
+          font-weight: 400;
+          text-transform: uppercase;
+          color: #000;
+          z-index: 2;
+        }
+      }
+
+      .socialMedia {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        margin-left: 30px;
+        gap: 20px;
+
+        .socialMediaItem {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          width: 45px;
+          height: 45px;
+          border-radius: 50%;
+          border: 2px solid rgba(255, 255, 255, 0.3);
+          transition: all 0.3s;
+          cursor: pointer;
+
+          .socialMediaItemIcon {
+            font-size: 16px;
+            color: #fff1d1;
+          }
+        }
+      }
+    }
+  }
+}
