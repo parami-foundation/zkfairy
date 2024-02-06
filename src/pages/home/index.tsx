@@ -8,10 +8,14 @@ import { ReactComponent as CardBuilding } from '@/assets/home/card/building.svg'
 import { ReactComponent as CardEquipment } from '@/assets/home/card/equipment.svg';
 import { ReactComponent as CardMore } from '@/assets/home/card/more.svg';
 import { ReactComponent as MoreBackground } from '@/assets/home/moreBackground.svg';
+import { ReactComponent as TokenCard } from '@/assets/home/tokenCard.svg';
+import { ReactComponent as JourneyPop } from '@/assets/home/journeyPop.svg';
+import classNames from "classnames";
 
 const Home: React.FC = () => {
   return (
     <div className={styles.homeContainer}>
+      <div className={styles.bannerBackground} />
       <div className={styles.homeWrapper}>
         <div className={styles.bannerContainer}>
           <div className={styles.bannerWrapper}>
@@ -27,19 +31,18 @@ const Home: React.FC = () => {
               ZKFairy
             </div>
           </div>
-          <div className={styles.bannerBackground} />
         </div>
+
         <div className={styles.aboutContainer}>
-          <div className={styles.aboutBackground}>
-            <BannerCircle className={styles.aboutCircle} />
-            <div className={styles.aboutIcon}>
-              <img
-                src={require('@/assets/home/ring.png')}
-                alt="aboutIcon"
-                className={styles.aboutIconImg}
-              />
-            </div>
+          <BannerCircle className={styles.aboutCircle} />
+          <div className={styles.aboutIcon}>
+            <img
+              src={require('@/assets/home/ring.png')}
+              alt="aboutIcon"
+              className={styles.aboutIconImg}
+            />
           </div>
+          <div className={styles.aboutBackground} />
           <div className={styles.aboutWrapper}>
             <div className={styles.aboutHeader}>
               <div className={styles.aboutLeft}>
@@ -109,17 +112,9 @@ const Home: React.FC = () => {
             </div>
           </div>
         </div>
+
         <div className={styles.moreContainer}>
-          <div className={styles.moreBackground}>
-            <div className={styles.moreBackgroundPng}>
-              <img
-                src={require('@/assets/home/moreBackground.png')}
-                alt="moreBackground"
-                className={styles.moreBackgroundPngImg}
-              />
-            </div>
-            <MoreBackground className={styles.moreBackgroundImg} />
-          </div>
+          <MoreBackground className={styles.moreBackgroundImg} />
           <div className={styles.moreWrapper}>
             <div className={styles.moreHeader}>
               <div className={styles.moreLeft}>
@@ -171,6 +166,132 @@ const Home: React.FC = () => {
                   alt="moreArrow"
                   className={styles.moreCardRightImg}
                 />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.tokenContainer}>
+          <img
+            src={require('@/assets/home/tokenBackground.png')}
+            alt="tokenBackground"
+            className={styles.tokenBackgroundImg}
+          />
+          <div className={styles.tokenWrapper}>
+            <div className={styles.tokenHeader}>
+              <div className={styles.tokenLeft}>
+                <AboutArrow
+                  className={styles.tokenLeftImg}
+                />
+              </div>
+              <div className={styles.tokenTitle}>
+                ZKFairy Token
+              </div>
+              <div className={styles.tokenRight}>
+                <AboutArrow
+                  className={styles.tokenRightImg}
+                />
+              </div>
+            </div>
+            <div className={styles.tokenContent}>
+              <TokenCard className={styles.tokenContentImg} />
+              <div className={styles.tokenCardBody}>
+                <div className={styles.tokenContentText}>
+                  ZKFairy Token is the native token of Bitcoin Cats Gaming Ecosystem.
+                  It is originally inscribed on Bitcoin and part of it is bridged / wrapped
+                  to Ethereum to benefit from the well developed DeFi and GameFi
+                  infrastructure. ZKFairy Token is the Utility token with the ZKFairy Master
+                  gaming ecosystem, which can be used to purchase and upgrade
+                  in-game assets, including characters, buildings, equipment, land,
+                  and more. It also serves as a ticket, allowing players to access
+                  special treasure points.
+                </div>
+                <img
+                  src={require('@/assets/home/tokenMedal.png')}
+                  alt="tokenMedal"
+                  className={styles.tokenContentMedal}
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className={styles.journeyContainer}>
+          <div className={styles.journeyBackground}>
+            <img
+              src={require('@/assets/home/journeyBackground.png')}
+              alt="journeyBackground"
+              className={styles.journeyBackgroundImg}
+            />
+            <div className={styles.journeyBackgroundColor} />
+            <div className={styles.journeyBackgroundStar} />
+            <div className={styles.journeyBackgroundFooter}>
+              <img
+                src={require('@/assets/home/journeyFooter.png')}
+                alt="journeyFooter"
+                className={styles.journeyBackgroundFooterImg}
+              />
+            </div>
+          </div>
+          <div className={styles.journeyWrapper}>
+            <div className={styles.journeyHeader}>
+              <div className={styles.journeyLeft}>
+                <AboutArrow
+                  className={styles.journeyLeftImg}
+                />
+              </div>
+              <div className={styles.journeyTitle}>
+                ZKFairy World
+              </div>
+              <div className={styles.journeyRight}>
+                <AboutArrow
+                  className={styles.journeyRightImg}
+                />
+              </div>
+            </div>
+            <div className={styles.journeyContent}>
+              The world journey of btc maid has already begun. Come and join this exciting adventure together!
+            </div>
+            <div className={styles.journeyCard}>
+              <div className={styles.journeyCardCharacter}>
+                <img
+                  src={require('@/assets/home/journeyGirl.png')}
+                  alt="journeyGirl"
+                  className={styles.journeyCardCharacterImg}
+                />
+              </div>
+              <div className={styles.journeyCardCharacterFire}>
+                <img
+                  src={require('@/assets/home/journeyFire.png')}
+                  alt="journeyFire"
+                  className={styles.journeyCardCharacterFireImg}
+                />
+              </div>
+              <div className={styles.journeyCardPops}>
+                <div className={classNames(styles.journeyCardPopsItem, styles.journeyCardPopsItem1)}>
+                  <JourneyPop
+                    className={styles.journeyCardPopsItemImg}
+                  />
+                  <div className={styles.journeyCardPopsItemText}>
+                    <p>Give me a Japanese architecture, game style Japanese temple.</p>
+                  </div>
+                </div>
+                <div className={classNames(styles.journeyCardPopsItem, styles.journeyCardPopsItem2)}>
+                  <JourneyPop
+                    className={styles.journeyCardPopsItemImg}
+                  />
+                  <div className={styles.journeyCardPopsItemText}>
+                    <p>Give me a magic cane full of energy beams.</p>
+                  </div>
+                </div>
+                <div className={classNames(styles.journeyCardPopsItem, styles.journeyCardPopsItem3)}>
+                  <JourneyPop
+                    className={styles.journeyCardPopsItemImg}
+                  />
+                  <div className={styles.journeyCardPopsItemText}>
+                    <p>Give me a Japanese architecture, game style Japanese temple.</p>
+                  </div>
+                </div>
               </div>
             </div>
           </div>

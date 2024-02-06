@@ -1,4 +1,4 @@
-import { optimism } from "wagmi/chains";
+import { zkFairTestnet, zkFair } from "wagmi/chains";
 
 export const DEBUG = true;
 
@@ -9,5 +9,5 @@ export const PROJECT_CONFIG = {
 };
 
 export const NETWORK_CONFIG = {
-  chains: [optimism],
+  chains: [zkFairTestnet, zkFair],
 };
