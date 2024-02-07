@@ -16,6 +16,7 @@ const Home: React.FC = () => {
   return (
     <div className={styles.homeContainer}>
       <div className={styles.bannerBackground} />
+      <div className={styles.plumeBackground} />
       <div className={styles.homeWrapper}>
         <div className={styles.bannerContainer}>
           <div className={styles.bannerWrapper}>
