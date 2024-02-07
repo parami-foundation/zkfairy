@@ -1,10 +1,13 @@
 import React from "react";
+import { useModel } from "@umijs/max";
 import styles from "./style.less";
 import { FaTelegramPlane } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { IoMdMail } from "react-icons/io";
 
 const Footer: React.FC = () => {
+  const { headerTab, setHeaderTab } = useModel("useSetting");
+
   return (
     <div className={styles.footerContainer}>
       <div className={styles.footerMask} />
@@ -18,19 +21,45 @@ const Footer: React.FC = () => {
             />
           </div>
           <div className={styles.footerNavContainer}>
-            <div className={styles.footerNavItem}>
+            <div
+              className={styles.footerNavItem}
+              onClick={() => {
+                setHeaderTab("home");
+                window.location.href = "#banner";
+              }}
+            >
               Home
             </div>
-            <div className={styles.footerNavItem}>
+            <div
+              className={styles.footerNavItem}
+              onClick={() => {
+                setHeaderTab("about");
+                window.location.href = "#about";
+              }}
+            >
               About
             </div>
-            <div className={styles.footerNavItem}>
+            <div
+              className={styles.footerNavItem}
+              onClick={() => {
+                setHeaderTab("token");
+                window.location.href = "#token";
+              }}
+            >
               Token
             </div>
-            <div className={styles.footerNavItem}>
+            <div
+              className={styles.footerNavItem}
+            >
               NFT
             </div>
-            <div className={styles.footerNavItem}>
+            <div
+              className={styles.footerNavItem}
+              onClick={() => {
+                setHeaderTab("journey");
+                window.location.href = "#journey";
+              }}
+            >
               Journey
             </div>
           </div>

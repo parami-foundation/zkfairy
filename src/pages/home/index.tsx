@@ -18,7 +18,7 @@ const Home: React.FC = () => {
       <div className={styles.bannerBackground} />
       <div className={styles.plumeBackground} />
       <div className={styles.homeWrapper}>
-        <div className={styles.bannerContainer}>
+        <div className={styles.bannerContainer} id="banner">
           <div className={styles.bannerWrapper}>
             <div className={styles.bannerSlogan}>
               <div className={styles.bannerSloganLeft}>
@@ -34,7 +34,7 @@ const Home: React.FC = () => {
           </div>
         </div>
 
-        <div className={styles.aboutContainer}>
+        <div className={styles.aboutContainer} id="about">
           <BannerCircle className={styles.aboutCircle} />
           <div className={styles.aboutIcon}>
             <img
@@ -114,7 +114,7 @@ const Home: React.FC = () => {
           </div>
         </div>
 
-        <div className={styles.moreContainer}>
+        <div className={styles.moreContainer} id="more">
           <MoreBackground className={styles.moreBackgroundImg} />
           <div className={styles.moreWrapper}>
             <div className={styles.moreHeader}>
@@ -172,7 +172,7 @@ const Home: React.FC = () => {
           </div>
         </div>
 
-        <div className={styles.tokenContainer}>
+        <div className={styles.tokenContainer} id="token">
           <img
             src={require('@/assets/home/tokenBackground.png')}
             alt="tokenBackground"
@@ -217,7 +217,7 @@ const Home: React.FC = () => {
           </div>
         </div>
 
-        <div className={styles.journeyContainer}>
+        <div className={styles.journeyContainer} id="journey">
           <div className={styles.journeyBackground}>
             <img
               src={require('@/assets/home/journeyBackground.png')}

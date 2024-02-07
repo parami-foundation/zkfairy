@@ -1,12 +1,13 @@
 import React from "react";
 import styles from "./style.less";
 import classNames from "classnames";
+import { useModel } from "@umijs/max";
 import { FaTelegramPlane } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 
 const Header: React.FC = () => {
-  const [tab, setTab] = React.useState<string>("home");
+  const { headerTab, setHeaderTab } = useModel("useSetting");
 
   return (
     <div className={styles.headerContainer}>
@@ -21,20 +22,42 @@ const Header: React.FC = () => {
           </div>
           <div className={styles.headerNavContainer}>
             <div
-              className={classNames(styles.headerNavItem, tab === "home" && styles.headerNavItemActive)}
+              className={classNames(styles.headerNavItem, headerTab === "home" && styles.headerNavItemActive)}
+              onClick={() => {
+                setHeaderTab("home");
+                window.location.href = "#banner";
+              }}
             >
               Home
             </div>
-            <div className={styles.headerNavItem}>
+            <div
+              className={classNames(styles.headerNavItem, headerTab === "about" && styles.headerNavItemActive)}
+              onClick={() => {
+                setHeaderTab("about");
+                window.location.href = "#about";
+              }}
+            >
               About
             </div>
-            <div className={styles.headerNavItem}>
+            <div
+              className={classNames(styles.headerNavItem, headerTab === "token" && styles.headerNavItemActive)}
+              onClick={() => {
+                setHeaderTab("token");
+                window.location.href = "#token";
+              }}
+            >
               Token
             </div>
             <div className={styles.headerNavItem}>
               NFT
             </div>
-            <div className={styles.headerNavItem}>
+            <div
+              className={classNames(styles.headerNavItem, headerTab === "journey" && styles.headerNavItemActive)}
+              onClick={() => {
+                setHeaderTab("journey");
+                window.location.href = "#journey";
+              }}
+            >
               Journey
             </div>
           </div>
