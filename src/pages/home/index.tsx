@@ -261,20 +261,13 @@ const Home: React.FC = () => {
                   className={styles.journeyCardCharacterImg}
                 />
               </div>
-              <div className={styles.journeyCardCharacterFire}>
-                <img
-                  src={require('@/assets/home/journeyFire.png')}
-                  alt="journeyFire"
-                  className={styles.journeyCardCharacterFireImg}
-                />
-              </div>
               <div className={styles.journeyCardPops}>
                 <div className={classNames(styles.journeyCardPopsItem, styles.journeyCardPopsItem1)}>
                   <JourneyPop
                     className={styles.journeyCardPopsItemImg}
                   />
                   <div className={styles.journeyCardPopsItemText}>
-                    <p>Give me a Japanese architecture, game style Japanese temple.</p>
+                    <p>It's been a long time since someone has touched me... But it wouldn't matter with you, sir.</p>
                   </div>
                 </div>
                 <div className={classNames(styles.journeyCardPopsItem, styles.journeyCardPopsItem2)}>
@@ -282,7 +275,7 @@ const Home: React.FC = () => {
                     className={styles.journeyCardPopsItemImg}
                   />
                   <div className={styles.journeyCardPopsItemText}>
-                    <p>Give me a magic cane full of energy beams.</p>
+                    <p>Welcome to the Wonderful General Store. We have a wide variety of items here. Come on in and take a look.</p>
                   </div>
                 </div>
                 <div className={classNames(styles.journeyCardPopsItem, styles.journeyCardPopsItem3)}>
@@ -290,7 +283,7 @@ const Home: React.FC = () => {
                     className={styles.journeyCardPopsItemImg}
                   />
                   <div className={styles.journeyCardPopsItemText}>
-                    <p>Give me a Japanese architecture, game style Japanese temple.</p>
+                    <p>It seems like today is a sale on accessories. If you have someone to give a gift to, this would be a great opportunity.</p>
                   </div>
                 </div>
               </div>

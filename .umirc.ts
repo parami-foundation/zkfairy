@@ -7,7 +7,7 @@ export default defineConfig({
     {
       path: "/",
       component: "home",
-    }
+    },
   ],
   manifest: {
     basePath: "/",
@@ -19,6 +19,12 @@ export default defineConfig({
   },
   hash: true,
   cssMinifier: "cssnano",
+  metas: [
+    {
+      name: "viewport",
+      content: "width=device-width, initial-scale=1.0",
+    }
+  ],
   scripts: [
     {
       src: "https://www.googletagmanager.com/gtag/js?id=G-5V5328KY76",

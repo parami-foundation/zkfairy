@@ -1,35 +1,24 @@
 import '@rainbow-me/rainbowkit/styles.css';
 import {
-  connectorsForWallets,
-} from '@rainbow-me/rainbowkit';
-import {
   NETWORK_CONFIG,
   PROJECT_CONFIG,
 } from "@/constants/global";
 import {
-  goerli,
-  mainnet,
-  polygon,
-  arbitrum,
-  base,
-  zora,
+  zkFairTestnet,
+  zkFair,
 } from 'wagmi/chains';
 import { WALLETCONNECT_CONFIG } from "@/constants/walletconnect";
+import { QueryClient } from '@tanstack/react-query';
+import { Config, createConfig, http } from 'wagmi';
 import { useEffect, useState } from "react";
-import { Config, configureChains, createConfig, PublicClient, WebSocketPublicClient } from 'wagmi';
-import { FallbackTransport, createPublicClient, http } from "viem";
-import { publicProvider } from 'wagmi/providers/public';
-import { coinbaseWallet, imTokenWallet, injectedWallet, metaMaskWallet, okxWallet, rainbowWallet, walletConnectWallet } from '@rainbow-me/rainbowkit/wallets';
+import { getDefaultConfig } from '@rainbow-me/rainbowkit';
+import { Client, createPublicClient, createWalletClient, publicActions } from 'viem';
 
 export default () => {
-  const [wagmiConfig, setWagmiConfig] =
-    useState<
-      Config<
-        PublicClient<FallbackTransport>,
-        WebSocketPublicClient<FallbackTransport>
-      > | null
-    >(null);
+  const [wagmiDefaultConfig, setWagmiDefaultConfig] = useState<Config | null>(null);
+  const [wagmiConfig, setWagmiConfig] = useState<Config | null>(null);
   const [wagmiChains, setWagmiChains] = useState<any | null>(null);
+  const [queryClient, setQueryClient] = useState<QueryClient | null>(null);
   const [wagmiInitialized, setWagmiInitialized] = useState<boolean>(false);
 
   useEffect(() => setWagmiInitialized(true), []);
@@ -38,57 +27,29 @@ export default () => {
     indexedDB?.deleteDatabase('WALLET_CONNECT_V2_INDEXED_DB');
     console.log("Initializing Wagmi");
 
-    const { chains, publicClient, webSocketPublicClient } = configureChains(
-      [...NETWORK_CONFIG.chains, mainnet, polygon, arbitrum, base, zora, goerli],
-      [
-        publicProvider(),
-      ]
-    );
-    setWagmiChains(chains);
-
-    const connectors = connectorsForWallets([
-      {
-        groupName: 'Recommended',
-        wallets: [
-          injectedWallet({
-            chains
-          }),
-          metaMaskWallet({
-            projectId: WALLETCONNECT_CONFIG.projectId,
-            chains
-          }),
-          okxWallet({
-            projectId: WALLETCONNECT_CONFIG.projectId,
-            chains
-          }),
-          rainbowWallet({
-            projectId: WALLETCONNECT_CONFIG.projectId,
-            chains,
-          }),
-          imTokenWallet({
-            projectId: WALLETCONNECT_CONFIG.projectId,
-            chains,
-          }),
-          coinbaseWallet({
-            appName: PROJECT_CONFIG.name,
-            chains,
-          }),
-          walletConnectWallet({
-            projectId: WALLETCONNECT_CONFIG.projectId,
-            chains
-          }),
-        ],
+    const defaultConfig = getDefaultConfig({
+      appName: PROJECT_CONFIG.name,
+      projectId: WALLETCONNECT_CONFIG.projectId,
+      chains: [zkFairTestnet, zkFair],
+      transports: {
+        [zkFairTestnet.id]: http(),
+        [zkFair.id]: http(),
       },
-    ]);
+    });
+    setWagmiDefaultConfig(defaultConfig);
+    setWagmiChains(defaultConfig.chains);
 
     const config = createConfig({
-      autoConnect: true,
-      connectors,
-      publicClient,
-      webSocketPublicClient,
+      chains: [zkFairTestnet, zkFair],
+      transports: {
+        [zkFairTestnet.id]: http(),
+        [zkFair.id]: http(),
+      },
     });
-
     setWagmiConfig(config);
+
+    const queryClient = new QueryClient();
+    setQueryClient(queryClient);
   }, []);
 
   const publicClient = createPublicClient({
@@ -96,10 +57,18 @@ export default () => {
     transport: http(),
   });
 
+  const walletClient: Client = createWalletClient({
+    chain: NETWORK_CONFIG.chains[0],
+    transport: http(),
+  }).extend(publicActions);
+
   return {
+    wagmiDefaultConfig,
     wagmiChains,
     wagmiConfig,
     publicClient,
+    walletClient,
+    queryClient,
     wagmiInitialized,
   };
 };

@@ -3,8 +3,8 @@ import { zkFairTestnet, zkFair } from "wagmi/chains";
 export const DEBUG = true;
 
 export const PROJECT_CONFIG = {
-  name: "Bitcoin Maid",
-  description: "Bitcoin Maid",
+  name: "ZKFairy",
+  description: "ZKFairy",
   url: "https://zkfairy.com",
 };
 

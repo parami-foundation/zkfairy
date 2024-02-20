@@ -86,7 +86,7 @@ const Header: React.FC = () => {
                   onClick={() => {
                     if (ready && !connected) {
                       openConnectModal();
-                    } else if (ready && connected) {
+                    } else {
                       openAccountModal();
                     }
                   }}

@@ -5,43 +5,48 @@ import { THEME_CONFIG } from "@/constants/theme";
 import Header from "@/components/header";
 import Footer from "@/components/footer";
 import { useModel } from "@umijs/max";
-import { WagmiConfig } from "wagmi";
-import { RainbowKitProvider, lightTheme } from "@rainbow-me/rainbowkit";
+import { WagmiProvider } from 'wagmi';
+import { RainbowKitProvider, lightTheme } from '@rainbow-me/rainbowkit';
+import { QueryClientProvider } from '@tanstack/react-query';
+import React, { useEffect } from "react";
 
 const Layout: React.FC = () => {
-  const { wagmiConfig, wagmiChains } = useModel('useWagmi');
+  const { wagmiDefaultConfig, queryClient } = useModel('useWagmi');
 
   return (
     <>
-      {!!wagmiConfig && (
-        <WagmiConfig
-          config={wagmiConfig}
+      {!!wagmiDefaultConfig && !!queryClient && (
+        <WagmiProvider
+          config={wagmiDefaultConfig}
         >
-          <RainbowKitProvider
-            chains={wagmiChains}
-            theme={lightTheme()}
+          <QueryClientProvider
+            client={queryClient}
           >
-            <ConfigProvider
-              theme={{
-                algorithm: theme.darkAlgorithm,
-                token: {
-                  wireframe: false,
-                  colorPrimary: THEME_CONFIG.colorPrimary,
-                  borderRadius: THEME_CONFIG.borderRadius,
-                  boxShadow: THEME_CONFIG.boxShadow,
-                },
-              }}
+            <RainbowKitProvider
+              theme={lightTheme()}
             >
-              <div className={styles.layoutContainer}>
-                <div className={styles.wrapperContainer}>
-                  <Header />
-                  <Outlet />
-                  <Footer />
+              <ConfigProvider
+                theme={{
+                  algorithm: theme.darkAlgorithm,
+                  token: {
+                    wireframe: false,
+                    colorPrimary: THEME_CONFIG.colorPrimary,
+                    borderRadius: THEME_CONFIG.borderRadius,
+                    boxShadow: THEME_CONFIG.boxShadow,
+                  },
+                }}
+              >
+                <div className={styles.layoutContainer}>
+                  <div className={styles.wrapperContainer}>
+                    <Header />
+                    <Outlet />
+                    <Footer />
+                  </div>
                 </div>
-              </div>
-            </ConfigProvider>
-          </RainbowKitProvider>
-        </WagmiConfig>
+              </ConfigProvider>
+            </RainbowKitProvider>
+          </QueryClientProvider>
+        </WagmiProvider>
       )}
     </>
   )
