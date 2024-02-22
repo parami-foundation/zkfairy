@@ -11,6 +11,8 @@ import { ReactComponent as MoreBackground } from '@/assets/home/moreBackground.s
 import { ReactComponent as TokenCard } from '@/assets/home/tokenCard.svg';
 import { ReactComponent as JourneyPop } from '@/assets/home/journeyPop.svg';
 import classNames from "classnames";
+import { ReactComponent as PlayNowButton } from '@/assets/home/playNow.svg';
+import { ReactComponent as WatchTrailerButton } from '@/assets/home/watchTrailer.svg';
 
 const Home: React.FC = () => {
   return (
@@ -44,6 +46,61 @@ const Home: React.FC = () => {
             />
           </div>
           <div className={styles.aboutBackground} />
+          <div className={styles.playContainer}>
+            <div className={styles.playWrapper}>
+              <div className={styles.playBackground}>
+                <img
+                  src={require('@/assets/home/playBackground.png')}
+                  alt="playBackground"
+                  className={styles.playBackgroundImg}
+                />
+              </div>
+              <div className={styles.playContent}>
+                <div className={styles.playCover}>
+                  <img
+                    src={require('@/assets/demo/play.png')}
+                    alt="playIcon"
+                    className={styles.playCoverImg}
+                  />
+                  <div className={styles.playCoverMaskUp} />
+                  <div className={styles.playCoverMaskDown} />
+                  <div className={styles.playCoverIcon1}>
+                    <img
+                      src={require('@/assets/home/playIcon1.png')}
+                      alt="playIcon1"
+                      className={styles.playCoverIconImg}
+                    />
+                  </div>
+                  <div className={styles.playCoverIcon2}>
+                    <img
+                      src={require('@/assets/home/playIcon2.png')}
+                      alt="playIcon2"
+                      className={styles.playCoverIconImg}
+                    />
+                  </div>
+                </div>
+                <div className={styles.playText}>
+                  <div className={styles.playTextTitle}>
+                    Monopoly Built on ZKFair
+                  </div>
+                  <div className={styles.playTextContent}>
+                    Embark on a journey where gaming meets crypto in ZKFairy. Immerse yourself in a dynamic world of monopoly and trading, where every move counts and every decision shapes your fate. Join forces with friends, negotiate deals, and conquer the market in ZKFairy – the premier destination for crypto gamers!
+                  </div>
+                  <div className={styles.playTextButton}>
+                    <PlayNowButton
+                      className={styles.playTextButtonItem}
+                      onClick={() => {
+                        window.open('https://game.zkfairy.com');
+                      }}
+                    />
+                    <WatchTrailerButton
+                      className={styles.playTextButtonItem}
+                    />
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
           <div className={styles.aboutWrapper}>
             <div className={styles.aboutHeader}>
               <div className={styles.aboutLeft}>

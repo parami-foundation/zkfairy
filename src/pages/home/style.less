@@ -44,7 +44,7 @@
       justify-content: center;
       align-items: center;
       width: 100%;
-      height: 70vh;
+      height: 80vh;
       z-index: 10;
 
       .bannerWrapper {
@@ -134,6 +134,162 @@
         z-index: 1;
       }
 
+      .playContainer {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        padding-top: 300px;
+
+        .playWrapper {
+          position: relative;
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+          padding: 0 5vw;
+
+          .playBackground {
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            align-items: center;
+            width: 100%;
+            overflow: hidden;
+
+            .playBackgroundImg {
+              width: 100%;
+              z-index: 3;
+            }
+          }
+
+          .playContent {
+            position: absolute;
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: 100%;
+            z-index: 10;
+            padding: 5vw 15vw;
+            gap: 5vw;
+
+            .playCover {
+              flex: 1;
+              position: relative;
+              height: 100%;
+
+              .playCoverImg {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+              }
+
+              .playCoverMaskUp {
+                position: absolute;
+                top: 0;
+                width: 100%;
+                height: 20%;
+                background: linear-gradient(
+                  180deg,
+                  #fbf7f4 20%,
+                  rgba(248, 244, 236, 0) 100%
+                );
+              }
+
+              .playCoverMaskDown {
+                position: absolute;
+                bottom: 0;
+                width: 100%;
+                height: 20%;
+                background: linear-gradient(
+                  0deg,
+                  #fbf7f4 20%,
+                  rgba(248, 244, 236, 0) 100%
+                );
+              }
+
+              .playCoverIcon1 {
+                position: absolute;
+                top: 20%;
+                left: -10%;
+                width: 90px;
+                height: 90px;
+                z-index: 10;
+
+                .playCoverIconImg {
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                }
+              }
+
+              .playCoverIcon2 {
+                position: absolute;
+                bottom: 20%;
+                right: -10%;
+                width: 90px;
+                height: 90px;
+                z-index: 10;
+
+                .playCoverIconImg {
+                  width: 100%;
+                  height: 100%;
+                  object-fit: cover;
+                }
+              }
+            }
+
+            .playText {
+              flex: 2;
+              display: flex;
+              flex-direction: column;
+              justify-content: center;
+              align-items: flex-start;
+              gap: 50px;
+
+              .playTextTitle {
+                font-family: Jockey One;
+                font-size: 50px;
+                font-weight: 400;
+                line-height: 60px;
+                letter-spacing: 0em;
+                text-align: center;
+              }
+
+              .playTextContent {
+                font-family: Josefin Slab;
+                font-size: 18px;
+                font-weight: 600;
+                line-height: 30px;
+                letter-spacing: 0em;
+                text-align: left;
+              }
+
+              .playTextButton {
+                display: flex;
+                flex-direction: row;
+                justify-content: flex-start;
+                align-items: center;
+                gap: 10px;
+
+                .playTextButtonItem {
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: center;
+                  height: 100px;
+                  cursor: pointer;
+                }
+              }
+            }
+          }
+        }
+      }
+
       .aboutWrapper {
         z-index: 10;
         display: flex;
@@ -142,7 +298,7 @@
         align-items: center;
         width: 100%;
         max-width: 70vw;
-        padding-top: 300px;
+        padding-top: 100px;
         padding-bottom: 120px;
 
         .aboutHeader {
