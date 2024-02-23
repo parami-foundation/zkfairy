@@ -122,7 +122,17 @@
       .aboutIcon {
         position: absolute;
         top: -10vh;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
         z-index: 3;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
       }
 
       .aboutBackground {
@@ -681,7 +691,6 @@
         justify-content: flex-start;
         align-items: center;
         width: 100%;
-        overflow: hidden;
 
         .journeyBackgroundImg {
           width: 110%;
@@ -1015,6 +1024,230 @@
             margin-top: 60px;
 
             .journeyCardPops {
+              .journeyCardPopsItem {
+                .journeyCardPopsItemText {
+                  p {
+                    font-size: 0.8vw;
+                    line-height: 20px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  .homeContainer {
+    .bannerBackground {
+      top: 80px;
+    }
+    .homeWrapper {
+      .bannerContainer {
+        .bannerWrapper {
+          max-width: 90vw;
+          .bannerSlogan {
+            .bannerSloganLeft {
+              font-size: 20px;
+              line-height: 36px;
+            }
+
+            .bannerSloganRight {
+              font-size: 20px;
+              line-height: 36px;
+            }
+          }
+
+          .bannerTitle {
+            font-size: 200px;
+            line-height: 250px;
+          }
+        }
+      }
+
+      .aboutContainer {
+        .aboutIcon {
+          top: -12vh;
+
+          img {
+            width: 80%;
+            height: 80%;
+            object-fit: cover;
+          }
+        }
+
+        .playContainer {
+          padding-top: 200px;
+          .playWrapper {
+            .playContent {
+              .playText {
+                gap: 30px;
+
+                .playTextTitle {
+                  font-size: 35px;
+                  line-height: 50px;
+                }
+
+                .playTextContent {
+                  font-size: 16px;
+                  line-height: 25px;
+                }
+
+                .playTextButton {
+                  gap: 5px;
+
+                  .playTextButtonItem {
+                    height: 70px;
+                  }
+                }
+              }
+            }
+          }
+        }
+
+        .aboutWrapper {
+          max-width: 90vw;
+          width: 100%;
+
+          .aboutHeader {
+            .aboutLeft {
+              width: 180px;
+              height: 86px;
+            }
+
+            .aboutTitle {
+              font-size: 30px;
+              line-height: 40px;
+            }
+
+            .aboutRight {
+              width: 180px;
+              height: 86px;
+            }
+          }
+
+          .aboutContent {
+            font-size: 16px;
+            line-height: 25px;
+            margin-top: 40px;
+          }
+
+          .aboutCard {
+            margin-top: 40px;
+
+            .aboutCardRow {
+              .aboutCardItem {
+                .aboutCardItemTitle {
+                  span {
+                    font-size: 20px;
+                    padding-top: 10px;
+                    padding-bottom: 5px;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+
+      .moreContainer {
+        .moreWrapper {
+          .moreHeader {
+            .moreLeft {
+              width: 180px;
+              height: 86px;
+            }
+
+            .moreTitle {
+              font-size: 30px;
+              line-height: 40px;
+            }
+
+            .moreRight {
+              width: 180px;
+              height: 86px;
+            }
+          }
+
+          .moreContent {
+            margin-top: 40px;
+          }
+        }
+      }
+
+      .tokenContainer {
+        .tokenWrapper {
+          .tokenHeader {
+            .tokenLeft {
+              width: 180px;
+              height: 86px;
+            }
+
+            .tokenTitle {
+              font-size: 30px;
+              line-height: 40px;
+            }
+
+            .tokenRight {
+              width: 180px;
+              height: 86px;
+            }
+          }
+
+          .tokenContent {
+            .tokenCardBody {
+              .tokenContentText {
+                font-size: 14px;
+                line-height: 20px;
+                padding: 20px;
+                margin-top: 20px;
+              }
+
+              .tokenContentMedal {
+                width: 45%;
+                object-fit: cover;
+              }
+            }
+          }
+        }
+      }
+
+      .journeyContainer {
+        .journeyWrapper {
+          margin-top: 10vw;
+          width: 100%;
+          max-width: 90vw;
+
+          .journeyHeader {
+            .journeyLeft {
+              width: 180px;
+              height: 86px;
+            }
+
+            .journeyTitle {
+              font-size: 30px;
+              line-height: 40px;
+            }
+
+            .journeyRight {
+              width: 180px;
+              height: 86px;
+            }
+          }
+
+          .journeyCard {
+            margin-top: 60px;
+
+            .journeyCardCharacter {
+              height: 600px;
+            }
+
+            .journeyCardPops {
+              height: 800px;
+
               .journeyCardPopsItem {
                 .journeyCardPopsItemText {
                   p {
