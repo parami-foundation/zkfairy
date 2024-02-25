@@ -151,6 +151,7 @@ const Header: React.FC = () => {
                   onClick={() => {
                     setHeaderTab("home");
                     window.location.href = "#banner";
+                    setMobileMenu(false);
                   }}
                 >
                   Home
@@ -160,6 +161,7 @@ const Header: React.FC = () => {
                   onClick={() => {
                     setHeaderTab("about");
                     window.location.href = "#about";
+                    setMobileMenu(false);
                   }}
                 >
                   About
@@ -169,6 +171,7 @@ const Header: React.FC = () => {
                   onClick={() => {
                     setHeaderTab("token");
                     window.location.href = "#token";
+                    setMobileMenu(false);
                   }}
                 >
                   Token
@@ -181,6 +184,7 @@ const Header: React.FC = () => {
                   onClick={() => {
                     setHeaderTab("journey");
                     window.location.href = "#journey";
+                    setMobileMenu(false);
                   }}
                 >
                   Journey
