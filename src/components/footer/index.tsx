@@ -63,6 +63,24 @@ const Footer: React.FC = () => {
               Journey
             </div>
           </div>
+          <div className={styles.footerSocialMediaMobile}>
+            <div className={styles.socialMediaItem}>
+              <FaTelegramPlane
+                className={styles.socialMediaItemIcon}
+              />
+            </div>
+            <div className={styles.socialMediaItem}>
+              <FaXTwitter
+                className={styles.socialMediaItemIcon}
+              />
+            </div>
+            <div className={styles.socialMediaItemLong}>
+              <IoMdMail
+                className={styles.socialMediaItemIcon}
+              />
+              <span>Contact Us</span>
+            </div>
+          </div>
         </div>
         <div className={styles.footerRow}>
           <div className={styles.footerCopyRight}>
