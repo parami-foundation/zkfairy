@@ -163,6 +163,14 @@
         }
       }
     }
+
+    .headerRightDesktop {
+      display: flex;
+    }
+
+    .headerRightMobile {
+      display: none;
+    }
   }
 }
 
@@ -227,6 +235,232 @@
             .socialMediaItemIcon {
               font-size: 14px;
             }
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  .headerContainer {
+    .headerWrapper {
+      .headerLeft {
+        .headerNavContainer {
+          display: none;
+        }
+      }
+
+      .headerRightDesktop {
+        display: none;
+      }
+
+      .headerRightMobile {
+        position: relative;
+        display: flex;
+
+        .headerRightMobileItem {
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          width: 45px;
+          height: 45px;
+          border-radius: 50%;
+          border: 2px solid rgba(255, 255, 255, 0.3);
+          transition: all 0.3s;
+          cursor: pointer;
+
+          .headerRightMobileItemIcon {
+            font-size: 16px;
+            color: #fff1d1;
+          }
+        }
+
+        .headerNavContainerMobile {
+          position: fixed;
+          top: 0;
+          left: 0;
+          display: flex;
+          flex-direction: column;
+          justify-content: space-between;
+          align-items: center;
+          width: 100%;
+          height: 100%;
+          background: linear-gradient(
+            270.03deg,
+            #18192f 0.04%,
+            #3178c7 104.63%
+          );
+          padding: 30px;
+          gap: 10px;
+          transition: all 0.3s;
+          overflow: hidden;
+
+          .headerNavContainerMobileHeader {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+          }
+
+          .headerNavContainerMobileHeaderButtons {
+            display: flex;
+            flex-direction: row;
+            justify-content: flex-end;
+            align-items: center;
+            width: 100%;
+
+            .headerNavContainerMobileHeaderIcon {
+              font-size: 30px;
+              color: #fff;
+              cursor: pointer;
+            }
+          }
+
+          .headerMobileLogo {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            height: 160px;
+
+            .headerMobileLogoImg {
+              width: 100%;
+              height: 100%;
+              object-fit: cover;
+            }
+          }
+
+          .headerNavContainerMobileContent {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            padding: 30px 20px;
+
+            .headerNavItem {
+              position: relative;
+              display: flex;
+              flex-direction: row;
+              justify-content: flex-start;
+              align-items: center;
+              color: rgba(255, 255, 255, 0.7);
+              font-size: 30px;
+              font-weight: 400;
+              font-family: "Jockey One";
+              text-decoration: none;
+              line-height: 42px;
+              transition: 0.3s;
+              padding: 30px 0;
+              width: 100%;
+              cursor: pointer;
+
+              &:hover {
+                color: #fff1d1;
+              }
+
+              &:not(:last-child) {
+                border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+              }
+
+              &::after {
+                content: "";
+                position: absolute;
+                right: 0;
+                width: 30px;
+                height: 30px;
+                background: url("@/assets/home/navActive.png") no-repeat;
+                background-size: 100% 100%;
+                background-position: center;
+                transition: all 0.3s;
+              }
+            }
+
+            .headerNavItemActive {
+              color: #fff1d1;
+            }
+          }
+
+          .headerNavContainerMobileButtons {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            gap: 20px;
+
+            .headerNavContainerMobileConnectWallet {
+              flex: 1;
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+              align-items: center;
+              transition: all 0.3s;
+              background: #ffefd1;
+              border-radius: 100px;
+              padding: 20px 50px;
+              cursor: pointer;
+
+              span {
+                font-family: Jockey One;
+                font-size: 30px;
+                font-weight: 400;
+                letter-spacing: 0em;
+                text-align: center;
+                text-transform: uppercase;
+              }
+            }
+
+            .headerNavContainerMobileSocialMedia {
+              flex: 1;
+              display: flex;
+              flex-direction: row;
+              justify-content: center;
+              align-items: center;
+              gap: 20px;
+
+              .headerNavContainerMobileSocialMediaItem {
+                display: flex;
+                flex-direction: row;
+                justify-content: center;
+                align-items: center;
+                transition: all 0.3s;
+                border: 3px solid #ffefd1;
+                border-radius: 100px;
+                padding: 20px 50px;
+                cursor: pointer;
+                gap: 10px;
+
+                .headerNavContainerMobileSocialMediaItemIcon {
+                  font-size: 30px;
+                  color: #fff1d1;
+                }
+
+                span {
+                  font-family: Jockey One;
+                  font-size: 30px;
+                  font-weight: 400;
+                  letter-spacing: 0em;
+                  text-align: center;
+                  text-transform: uppercase;
+                  color: #fff1d2;
+                }
+              }
+            }
+          }
+
+          .headerNavContainerMobileFooter {
+            bottom: 0;
+            font-family: Poppins;
+            font-size: 20px;
+            font-weight: 300;
+            line-height: 30px;
+            letter-spacing: 0px;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.3);
           }
         }
       }
