@@ -1,20 +1,81 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import styles from "./style.less";
-import { Col, Row } from "antd";
+import { Carousel, Col, Row } from "antd";
 import { ReactComponent as BannerCircle } from '@/assets/home/bannerCircle.svg';
 import { ReactComponent as AboutArrow } from '@/assets/home/aboutArrow.svg';
-import { ReactComponent as CardCharacter } from '@/assets/home/card/character.svg';
-import { ReactComponent as CardBuilding } from '@/assets/home/card/building.svg';
-import { ReactComponent as CardEquipment } from '@/assets/home/card/equipment.svg';
-import { ReactComponent as CardMore } from '@/assets/home/card/more.svg';
 import { ReactComponent as MoreBackground } from '@/assets/home/moreBackground.svg';
 import { ReactComponent as TokenCard } from '@/assets/home/tokenCard.svg';
-import { ReactComponent as JourneyPop } from '@/assets/home/journeyPop.svg';
+import { ReactComponent as JourneyPop1 } from '@/assets/home/journey/pop1.svg';
+import { ReactComponent as JourneyPop2 } from '@/assets/home/journey/pop2.svg';
+import { ReactComponent as JourneyPop3 } from '@/assets/home/journey/pop3.svg';
+import { ReactComponent as JourneyPop4 } from '@/assets/home/journey/pop4.svg';
 import classNames from "classnames";
 import { ReactComponent as PlayNowButton } from '@/assets/home/playNow.svg';
 import { ReactComponent as WatchTrailerButton } from '@/assets/home/watchTrailer.svg';
 
 const Home: React.FC = () => {
+  const [playQueue, setPlayQueue] = React.useState<number[]>([0, 1, 2, 3]);
+
+  const characterVideoRef = useRef<HTMLVideoElement>(null);
+  const buildingVideoRef = useRef<HTMLVideoElement>(null);
+  const equipmentVideoRef = useRef<HTMLVideoElement>(null);
+  const moreVideoRef = useRef<HTMLVideoElement>(null);
+
+  // Play video one by one in a loop, and switch to the next video when the current video ends
+  useEffect(() => {
+    const playNext = (index: number) => {
+      if (index === 0) {
+        characterVideoRef.current?.play();
+      } else if (index === 1) {
+        buildingVideoRef.current?.play();
+      } else if (index === 2) {
+        equipmentVideoRef.current?.play();
+      } else if (index === 3) {
+        moreVideoRef.current?.play();
+      }
+    };
+
+    const onEnded = (index: number) => {
+      const nextIndex = (index + 1) % 4;
+      setPlayQueue((prev) => {
+        const next = [...prev];
+        next.push(next.shift() as number);
+        return next;
+      });
+      playNext(nextIndex);
+    };
+
+    characterVideoRef.current?.addEventListener('ended', () => {
+      onEnded(0);
+    });
+    buildingVideoRef.current?.addEventListener('ended', () => {
+      onEnded(1);
+    });
+    equipmentVideoRef.current?.addEventListener('ended', () => {
+      onEnded(2);
+    });
+    moreVideoRef.current?.addEventListener('ended', () => {
+      onEnded(3);
+    });
+
+    playNext(playQueue[0]);
+
+    return () => {
+      characterVideoRef.current?.removeEventListener('ended', () => {
+        onEnded(0);
+      });
+      buildingVideoRef.current?.removeEventListener('ended', () => {
+        onEnded(1);
+      });
+      equipmentVideoRef.current?.removeEventListener('ended', () => {
+        onEnded(2);
+      });
+      moreVideoRef.current?.removeEventListener('ended', () => {
+        onEnded(3);
+      });
+    };
+  }, []);
+
   return (
     <div className={styles.homeContainer}>
       <div className={styles.bannerBackground} />
@@ -131,8 +192,12 @@ const Home: React.FC = () => {
                     <div className={styles.aboutCardItemTitle}>
                       <span>CHARACTER</span>
                     </div>
-                    <CardCharacter
+                    <video
+                      muted
+                      controls={false}
+                      src={require('@/assets/home/card/character.webm')}
                       className={styles.aboutCardItemImg}
+                      ref={characterVideoRef}
                     />
                   </div>
                 </Col>
@@ -141,8 +206,12 @@ const Home: React.FC = () => {
                     <div className={styles.aboutCardItemTitle}>
                       <span>BUILDING</span>
                     </div>
-                    <CardBuilding
+                    <video
+                      muted
+                      controls={false}
+                      src={require('@/assets/home/card/building.webm')}
                       className={styles.aboutCardItemImg}
+                      ref={buildingVideoRef}
                     />
                   </div>
                 </Col>
@@ -151,8 +220,12 @@ const Home: React.FC = () => {
                     <div className={styles.aboutCardItemTitle}>
                       <span>EQUIPMENT</span>
                     </div>
-                    <CardEquipment
+                    <video
+                      muted
+                      controls={false}
+                      src={require('@/assets/home/card/equipment.webm')}
                       className={styles.aboutCardItemImg}
+                      ref={equipmentVideoRef}
                     />
                   </div>
                 </Col>
@@ -161,8 +234,12 @@ const Home: React.FC = () => {
                     <div className={styles.aboutCardItemTitle}>
                       <span>AND MORE</span>
                     </div>
-                    <CardMore
+                    <video
+                      muted
+                      controls={false}
+                      src={require('@/assets/home/card/more.webm')}
                       className={styles.aboutCardItemImg}
+                      ref={moreVideoRef}
                     />
                   </div>
                 </Col>
@@ -310,41 +387,158 @@ const Home: React.FC = () => {
             <div className={styles.journeyContent}>
               The world journey of btc maid has already begun. Come and join this exciting adventure together!
             </div>
-            <div className={styles.journeyCard}>
-              <div className={styles.journeyCardCharacter}>
-                <img
-                  src={require('@/assets/home/journeyGirl.png')}
-                  alt="journeyGirl"
-                  className={styles.journeyCardCharacterImg}
-                />
+            <Carousel
+              autoplay
+              effect="fade"
+              dotPosition="bottom"
+              autoplaySpeed={5000}
+              className={styles.journeyCarousel}
+              dots={{ className: styles.journeyCarouselDots }}
+            >
+              <div className={styles.journeyCard}>
+                <div className={styles.journeyCardCharacter}>
+                  <img
+                    src={require('@/assets/home/journey/character1.png')}
+                    alt="journeyGirl"
+                    className={styles.journeyCardCharacterImg}
+                  />
+                </div>
+                <div className={styles.journeyCardPops}>
+                  <div className={classNames(styles.journeyCardPopsItem, styles.journeyCardPopsItem1)}>
+                    <JourneyPop1
+                      className={styles.journeyCardPopsItemImg}
+                    />
+                    <div className={styles.journeyCardPopsItemText}>
+                      <p>Hehe... Is this a mark? A sign that I belong to you?</p>
+                    </div>
+                  </div>
+                  <div className={classNames(styles.journeyCardPopsItem, styles.journeyCardPopsItem2)}>
+                    <JourneyPop1
+                      className={styles.journeyCardPopsItemImg}
+                    />
+                    <div className={styles.journeyCardPopsItemText}>
+                      <p>Do you need a few pieces of sturdy and durable armor?</p>
+                    </div>
+                  </div>
+                  <div className={classNames(styles.journeyCardPopsItem, styles.journeyCardPopsItem3)}>
+                    <JourneyPop1
+                      className={styles.journeyCardPopsItemImg}
+                    />
+                    <div className={styles.journeyCardPopsItemText}>
+                      <p>Today is the food festival. Have something to eat, anyway can also satisfy an appetite first.</p>
+                    </div>
+                  </div>
+                </div>
               </div>
-              <div className={styles.journeyCardPops}>
-                <div className={classNames(styles.journeyCardPopsItem, styles.journeyCardPopsItem1)}>
-                  <JourneyPop
-                    className={styles.journeyCardPopsItemImg}
+
+              <div className={styles.journeyCard}>
+                <div className={styles.journeyCardCharacter}>
+                  <img
+                    src={require('@/assets/home/journey/character2.png')}
+                    alt="journeyGirl"
+                    className={styles.journeyCardCharacterImg}
                   />
-                  <div className={styles.journeyCardPopsItemText}>
-                    <p>It's been a long time since someone has touched me... But it wouldn't matter with you, sir.</p>
-                  </div>
                 </div>
-                <div className={classNames(styles.journeyCardPopsItem, styles.journeyCardPopsItem2)}>
-                  <JourneyPop
-                    className={styles.journeyCardPopsItemImg}
-                  />
-                  <div className={styles.journeyCardPopsItemText}>
-                    <p>Welcome to the Wonderful General Store. We have a wide variety of items here. Come on in and take a look.</p>
+                <div className={styles.journeyCardPops}>
+                  <div className={classNames(styles.journeyCardPopsItem, styles.journeyCardPopsItem1)}>
+                    <JourneyPop2
+                      className={styles.journeyCardPopsItemImg}
+                    />
+                    <div className={styles.journeyCardPopsItemText}>
+                      <p>It's been a long time since someone has touched me... But it wouldn't matter with you, sir.</p>
+                    </div>
                   </div>
-                </div>
-                <div className={classNames(styles.journeyCardPopsItem, styles.journeyCardPopsItem3)}>
-                  <JourneyPop
-                    className={styles.journeyCardPopsItemImg}
-                  />
-                  <div className={styles.journeyCardPopsItemText}>
-                    <p>It seems like today is a sale on accessories. If you have someone to give a gift to, this would be a great opportunity.</p>
+                  <div className={classNames(styles.journeyCardPopsItem, styles.journeyCardPopsItem2)}>
+                    <JourneyPop2
+                      className={styles.journeyCardPopsItemImg}
+                    />
+                    <div className={styles.journeyCardPopsItemText}>
+                      <p>Welcome to the Wonderful General Store. We have a wide variety of items here. Come on in and take a look.</p>
+                    </div>
+                  </div>
+                  <div className={classNames(styles.journeyCardPopsItem, styles.journeyCardPopsItem3)}>
+                    <JourneyPop2
+                      className={styles.journeyCardPopsItemImg}
+                    />
+                    <div className={styles.journeyCardPopsItemText}>
+                      <p>It seems like today is a sale on accessories. If you have someone to give a gift to, this would be a great opportunity.</p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+
+              <div className={styles.journeyCard}>
+                <div className={styles.journeyCardCharacter}>
+                  <img
+                    src={require('@/assets/home/journey/character3.png')}
+                    alt="journeyGirl"
+                    className={styles.journeyCardCharacterImg}
+                  />
+                </div>
+                <div className={styles.journeyCardPops}>
+                  <div className={classNames(styles.journeyCardPopsItem, styles.journeyCardPopsItem1)}>
+                    <JourneyPop3
+                      className={styles.journeyCardPopsItemImg}
+                    />
+                    <div className={styles.journeyCardPopsItemText}>
+                      <p>Welcome, customers. We don't have everything, but we've got most things.</p>
+                    </div>
+                  </div>
+                  <div className={classNames(styles.journeyCardPopsItem, styles.journeyCardPopsItem2)}>
+                    <JourneyPop3
+                      className={styles.journeyCardPopsItemImg}
+                    />
+                    <div className={styles.journeyCardPopsItemText}>
+                      <p>Today we have some mysterious memorabilia for sale that you won't find anywhere else.</p>
+                    </div>
+                  </div>
+                  <div className={classNames(styles.journeyCardPopsItem, styles.journeyCardPopsItem3)}>
+                    <JourneyPop3
+                      className={styles.journeyCardPopsItemImg}
+                    />
+                    <div className={styles.journeyCardPopsItemText}>
+                      <p>I mean, you don't go around doing that to just anybody, do you? If it's only me. Well, that's okay then.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className={styles.journeyCard}>
+                <div className={styles.journeyCardCharacter}>
+                  <img
+                    src={require('@/assets/home/journey/character4.png')}
+                    alt="journeyGirl"
+                    className={styles.journeyCardCharacterImg}
+                  />
+                </div>
+                <div className={styles.journeyCardPops}>
+                  <div className={classNames(styles.journeyCardPopsItem, styles.journeyCardPopsItem1)}>
+                    <JourneyPop4
+                      className={styles.journeyCardPopsItemImg}
+                    />
+                    <div className={styles.journeyCardPopsItemText}>
+                      <p>Hhaha, it's itchy. Did I get something on my hair?</p>
+                    </div>
+                  </div>
+                  <div className={classNames(styles.journeyCardPopsItem, styles.journeyCardPopsItem2)}>
+                    <JourneyPop4
+                      className={styles.journeyCardPopsItemImg}
+                    />
+                    <div className={styles.journeyCardPopsItemText}>
+                      <p>Welcome! The Wonderful General Store has a dazzling array of goods; you name it, we've got it.</p>
+                    </div>
+                  </div>
+                  <div className={classNames(styles.journeyCardPopsItem, styles.journeyCardPopsItem3)}>
+                    <JourneyPop4
+                      className={styles.journeyCardPopsItemImg}
+                    />
+                    <div className={styles.journeyCardPopsItemText}>
+                      <p>Would you like to try some dessert? There's a special offer today.</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </Carousel>
           </div>
         </div>
       </div>

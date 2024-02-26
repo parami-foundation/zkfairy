@@ -661,12 +661,13 @@
 
             .tokenContentText {
               font-family: Josefin Slab;
-              font-size: 20px;
+              font-size: 1vw;
               font-weight: 600;
-              line-height: 30px;
+              line-height: 2vw;
               letter-spacing: 0em;
               text-align: left;
               padding: 30px;
+              margin-top: 30px;
               color: #fff;
             }
           }
@@ -683,6 +684,7 @@
       height: 100%;
       margin-top: -20vw;
       z-index: 10;
+      overflow: hidden;
 
       .journeyBackground {
         position: relative;
@@ -790,6 +792,53 @@
           margin-top: 30px;
         }
 
+        .journeyCarouselDots {
+          width: 100%;
+          bottom: -100px;
+
+          :global(li) {
+            width: 20px;
+            height: 20px;
+            margin: 0 10px;
+            padding: 0;
+            background: transparent;
+          }
+
+          :global(li button) {
+            background: transparent;
+            width: 20px;
+            height: 20px;
+
+            &::after {
+              background: url("@/assets/home/journeyDot.svg") no-repeat center
+                center;
+              width: 20px;
+              height: 20px;
+              inset: 0;
+            }
+          }
+        }
+
+        :global(.ant-carousel) {
+          width: 100%;
+          height: 100%;
+        }
+
+        .journeyCarousel {
+          position: relative;
+          display: flex;
+          flex-direction: row;
+          justify-content: center;
+          align-items: center;
+          width: 100%;
+
+          :global(.slick-list) {
+            width: 100%;
+            height: 100%;
+            overflow: visible;
+          }
+        }
+
         .journeyCard {
           position: relative;
           display: flex;
@@ -812,6 +861,7 @@
 
           .journeyCardPops {
             position: absolute;
+            top: -100px;
             height: 930px;
             width: 100%;
             z-index: 3;
