@@ -12,6 +12,8 @@ import { ReactComponent as JourneyPop4 } from '@/assets/home/journey/pop4.svg';
 import classNames from "classnames";
 import { ReactComponent as PlayNowButton } from '@/assets/home/playNow.svg';
 import { ReactComponent as WatchTrailerButton } from '@/assets/home/watchTrailer.svg';
+import YouTube from 'react-youtube';
+import { CarouselRef } from "antd/es/carousel";
 
 const Home: React.FC = () => {
   const [playQueue, setPlayQueue] = React.useState<number[]>([0, 1, 2, 3]);
@@ -20,6 +22,8 @@ const Home: React.FC = () => {
   const buildingVideoRef = useRef<HTMLVideoElement>(null);
   const equipmentVideoRef = useRef<HTMLVideoElement>(null);
   const moreVideoRef = useRef<HTMLVideoElement>(null);
+
+  const moreCardSliderContentCarouselRef = useRef<CarouselRef>(null);
 
   // Play video one by one in a loop, and switch to the next video when the current video ends
   useEffect(() => {
@@ -118,11 +122,15 @@ const Home: React.FC = () => {
               </div>
               <div className={styles.playContent}>
                 <div className={styles.playCover}>
-                  <img
-                    src={require('@/assets/demo/play.png')}
-                    alt="playIcon"
+                  <video
+                    autoPlay
+                    muted
+                    controls={false}
                     className={styles.playCoverImg}
-                  />
+                  >
+                    <source src={require('@/assets/demo/play.mp4')} type="video/mp4" />
+                    <source src={require('@/assets/demo/play.webm')} type="video/webm" />
+                  </video>
                   <div className={styles.playCoverMaskUp} />
                   <div className={styles.playCoverMaskDown} />
                   <div className={styles.playCoverIcon1}>
@@ -195,10 +203,12 @@ const Home: React.FC = () => {
                     <video
                       muted
                       controls={false}
-                      src={require('@/assets/home/card/character.webm')}
                       className={styles.aboutCardItemImg}
                       ref={characterVideoRef}
-                    />
+                    >
+                      <source src={require('@/assets/home/card/character.mp4')} type="video/mp4" />
+                      <source src={require('@/assets/home/card/character.webm')} type="video/webm" />
+                    </video>
                   </div>
                 </Col>
                 <Col xs={12} sm={12} md={12} lg={6} xl={6}>
@@ -209,10 +219,12 @@ const Home: React.FC = () => {
                     <video
                       muted
                       controls={false}
-                      src={require('@/assets/home/card/building.webm')}
                       className={styles.aboutCardItemImg}
                       ref={buildingVideoRef}
-                    />
+                    >
+                      <source src={require('@/assets/home/card/building.mp4')} type="video/mp4" />
+                      <source src={require('@/assets/home/card/building.webm')} type="video/webm" />
+                    </video>
                   </div>
                 </Col>
                 <Col xs={12} sm={12} md={12} lg={6} xl={6}>
@@ -223,10 +235,12 @@ const Home: React.FC = () => {
                     <video
                       muted
                       controls={false}
-                      src={require('@/assets/home/card/equipment.webm')}
                       className={styles.aboutCardItemImg}
                       ref={equipmentVideoRef}
-                    />
+                    >
+                      <source src={require('@/assets/home/card/equipment.mp4')} type="video/mp4" />
+                      <source src={require('@/assets/home/card/equipment.webm')} type="video/webm" />
+                    </video>
                   </div>
                 </Col>
                 <Col xs={12} sm={12} md={12} lg={6} xl={6}>
@@ -237,10 +251,12 @@ const Home: React.FC = () => {
                     <video
                       muted
                       controls={false}
-                      src={require('@/assets/home/card/more.webm')}
                       className={styles.aboutCardItemImg}
                       ref={moreVideoRef}
-                    />
+                    >
+                      <source src={require('@/assets/home/card/more.mp4')} type="video/mp4" />
+                      <source src={require('@/assets/home/card/more.webm')} type="video/webm" />
+                    </video>
                   </div>
                 </Col>
               </Row>
@@ -270,7 +286,12 @@ const Home: React.FC = () => {
               Assemble an adventure team to explore the world, defeat mnsters, and discover treasures.
             </div>
             <div className={styles.moreCard}>
-              <div className={styles.moreCardLeft}>
+              <div
+                className={styles.moreCardLeft}
+                onClick={() => {
+                  moreCardSliderContentCarouselRef.current?.prev();
+                }}
+              >
                 <img
                   src={require('@/assets/home/moreArrow.png')}
                   alt="moreArrow"
@@ -286,16 +307,62 @@ const Home: React.FC = () => {
                   />
                 </div>
                 <div className={styles.moreCardSliderContent}>
-                  <div className={styles.moreCardSliderItem}>
-                    <img
-                      src={require('@/assets/demo/1.png')}
-                      alt="moreCard1"
-                      className={styles.moreCardSliderItemImg}
-                    />
-                  </div>
+                  <Carousel
+                    effect="fade"
+                    className={styles.moreCardSliderContentCarousel}
+                    ref={moreCardSliderContentCarouselRef}
+                  >
+                    <div className={styles.moreCardSliderItem}>
+                      <YouTube
+                        videoId="oDcN9RXjDNg"
+                        className={styles.moreCardSliderItemImg}
+                      />
+                    </div>
+                    <div className={styles.moreCardSliderItem}>
+                      <YouTube
+                        videoId="_VtN2NFCAd4"
+                        className={styles.moreCardSliderItemImg}
+                      />
+                    </div>
+                    <div className={styles.moreCardSliderItem}>
+                      <YouTube
+                        videoId="-DWkuA6tTq8"
+                        className={styles.moreCardSliderItemImg}
+                      />
+                    </div>
+                    <div className={styles.moreCardSliderItem}>
+                      <YouTube
+                        videoId="AV1H8gUDvDo"
+                        className={styles.moreCardSliderItemImg}
+                      />
+                    </div>
+                    <div className={styles.moreCardSliderItem}>
+                      <YouTube
+                        videoId="IXwTZURK4n4"
+                        className={styles.moreCardSliderItemImg}
+                      />
+                    </div>
+                    <div className={styles.moreCardSliderItem}>
+                      <YouTube
+                        videoId="RU7mSGqf3h4"
+                        className={styles.moreCardSliderItemImg}
+                      />
+                    </div>
+                    <div className={styles.moreCardSliderItem}>
+                      <YouTube
+                        videoId="P8F6ksMajzA"
+                        className={styles.moreCardSliderItemImg}
+                      />
+                    </div>
+                  </Carousel>
                 </div>
               </div>
-              <div className={styles.moreCardRight}>
+              <div
+                className={styles.moreCardRight}
+                onClick={() => {
+                  moreCardSliderContentCarouselRef.current?.next();
+                }}
+              >
                 <img
                   src={require('@/assets/home/moreArrow.png')}
                   alt="moreArrow"
