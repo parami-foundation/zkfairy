@@ -130,6 +130,7 @@ const Home: React.FC = () => {
                   >
                     <source src={require('@/assets/demo/play.mp4')} type="video/mp4" />
                     <source src={require('@/assets/demo/play.webm')} type="video/webm" />
+                    Your browser does not support the video tag.
                   </video>
                   <div className={styles.playCoverMaskUp} />
                   <div className={styles.playCoverMaskDown} />
@@ -208,6 +209,7 @@ const Home: React.FC = () => {
                     >
                       <source src={require('@/assets/home/card/character.mp4')} type="video/mp4" />
                       <source src={require('@/assets/home/card/character.webm')} type="video/webm" />
+                      Your browser does not support the video tag.
                     </video>
                   </div>
                 </Col>
@@ -224,6 +226,7 @@ const Home: React.FC = () => {
                     >
                       <source src={require('@/assets/home/card/building.mp4')} type="video/mp4" />
                       <source src={require('@/assets/home/card/building.webm')} type="video/webm" />
+                      Your browser does not support the video tag.
                     </video>
                   </div>
                 </Col>
@@ -240,6 +243,7 @@ const Home: React.FC = () => {
                     >
                       <source src={require('@/assets/home/card/equipment.mp4')} type="video/mp4" />
                       <source src={require('@/assets/home/card/equipment.webm')} type="video/webm" />
+                      Your browser does not support the video tag.
                     </video>
                   </div>
                 </Col>
@@ -256,6 +260,7 @@ const Home: React.FC = () => {
                     >
                       <source src={require('@/assets/home/card/more.mp4')} type="video/mp4" />
                       <source src={require('@/assets/home/card/more.webm')} type="video/webm" />
+                      Your browser does not support the video tag.
                     </video>
                   </div>
                 </Col>
