@@ -6,6 +6,7 @@ import { FaTelegramPlane } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { ConnectButton } from "@rainbow-me/rainbowkit";
 import { IoMdClose, IoMdMenu } from "react-icons/io";
+import { Tooltip } from "antd";
 
 const Header: React.FC = () => {
   const { headerTab, setHeaderTab } = useModel("useSetting");
@@ -229,13 +230,21 @@ const Header: React.FC = () => {
                   }}
                 </ConnectButton.Custom>
                 <div className={styles.headerNavContainerMobileSocialMedia}>
-                  <div className={styles.headerNavContainerMobileSocialMediaItem}>
-                    <FaTelegramPlane
-                      className={styles.headerNavContainerMobileSocialMediaItemIcon}
-                    />
-                    <span>Telegram</span>
-                  </div>
-                  <div className={styles.headerNavContainerMobileSocialMediaItem}>
+                  <Tooltip
+                    placement="top"
+                    title={"Coming Soon"}
+                  >
+                    <div className={styles.headerNavContainerMobileSocialMediaItem}>
+                      <FaTelegramPlane
+                        className={styles.headerNavContainerMobileSocialMediaItemIcon}
+                      />
+                      <span>Telegram</span>
+                    </div>
+                  </Tooltip>
+                  <div
+                    className={styles.headerNavContainerMobileSocialMediaItem}
+                    onClick={() => window.open("https://twitter.com/ZKFairy", "_blank")}
+                  >
                     <FaXTwitter
                       className={styles.headerNavContainerMobileSocialMediaItemIcon}
                     />

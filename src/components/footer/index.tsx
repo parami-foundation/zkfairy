@@ -4,6 +4,7 @@ import styles from "./style.less";
 import { FaTelegramPlane } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 import { IoMdMail } from "react-icons/io";
+import { Tooltip } from "antd";
 
 const Footer: React.FC = () => {
   const { headerTab, setHeaderTab } = useModel("useSetting");
@@ -84,25 +85,38 @@ const Footer: React.FC = () => {
         </div>
         <div className={styles.footerRow}>
           <div className={styles.footerCopyRight}>
-            © 2023 ZKFairy Protocol. All Rights Reserved.
+            © {new Date().getFullYear()} ZKFairy Protocol. All Rights Reserved.
           </div>
           <div className={styles.footerSocialMedia}>
-            <div className={styles.socialMediaItem}>
-              <FaTelegramPlane
-                className={styles.socialMediaItemIcon}
-              />
-            </div>
-            <div className={styles.socialMediaItem}>
+            <Tooltip
+              placement="top"
+              title={"Coming Soon"}
+            >
+              <div className={styles.socialMediaItem}>
+                <FaTelegramPlane
+                  className={styles.socialMediaItemIcon}
+                />
+              </div>
+            </Tooltip>
+            <div
+              className={styles.socialMediaItem}
+              onClick={() => window.open("https://twitter.com/ZKFairy", "_blank")}
+            >
               <FaXTwitter
                 className={styles.socialMediaItemIcon}
               />
             </div>
-            <div className={styles.socialMediaItemLong}>
-              <IoMdMail
-                className={styles.socialMediaItemIcon}
-              />
-              <span>Contact Us</span>
-            </div>
+            <Tooltip
+              placement="top"
+              title={"Coming Soon"}
+            >
+              <div className={styles.socialMediaItemLong}>
+                <IoMdMail
+                  className={styles.socialMediaItemIcon}
+                />
+                <span>Contact Us</span>
+              </div>
+            </Tooltip>
           </div>
         </div>
       </div>
