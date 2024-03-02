@@ -105,12 +105,20 @@ const Header: React.FC = () => {
             }}
           </ConnectButton.Custom>
           <div className={styles.socialMedia}>
-            <div className={styles.socialMediaItem}>
-              <FaTelegramPlane
-                className={styles.socialMediaItemIcon}
-              />
-            </div>
-            <div className={styles.socialMediaItem}>
+            <Tooltip
+              placement="top"
+              title={"Coming Soon"}
+            >
+              <div className={styles.socialMediaItem}>
+                <FaTelegramPlane
+                  className={styles.socialMediaItemIcon}
+                />
+              </div>
+            </Tooltip>
+            <div
+              className={styles.socialMediaItem}
+              onClick={() => window.open("https://twitter.com/ZKFairy", "_blank")}
+            >
               <FaXTwitter
                 className={styles.socialMediaItemIcon}
               />
@@ -259,7 +267,7 @@ const Header: React.FC = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div >
   );
 };
 
