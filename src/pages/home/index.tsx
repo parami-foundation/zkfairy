@@ -319,7 +319,7 @@ const Home: React.FC = () => {
                   >
                     <div className={styles.moreCardSliderItem}>
                       <YouTube
-                        videoId="oDcN9RXjDNg"
+                        videoId="d0p2giltCYY"
                         className={styles.moreCardSliderItemImg}
                       />
                     </div>
