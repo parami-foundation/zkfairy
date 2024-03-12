@@ -404,14 +404,8 @@ const Home: React.FC = () => {
               <TokenCard className={styles.tokenContentImg} />
               <div className={styles.tokenCardBody}>
                 <div className={styles.tokenContentText}>
-                  ZKFairy Token is the native token of Bitcoin Cats Gaming Ecosystem.
-                  It is originally inscribed on Bitcoin and part of it is bridged / wrapped
-                  to Ethereum to benefit from the well developed DeFi and GameFi
-                  infrastructure. ZKFairy Token is the Utility token with the ZKFairy Master
-                  gaming ecosystem, which can be used to purchase and upgrade
-                  in-game assets, including characters, buildings, equipment, land,
-                  and more. It also serves as a ticket, allowing players to access
-                  special treasure points.
+                  <b>"Forge Your Legacy in ZKFairy's Universe"</b><br />
+                  In ZKFairy's world, adventure and innovation intertwine through the seamless integration of crypto mechanics and Zero-Knowledge Proofs, ensuring privacy and security in every transaction and battle. Dive into an epic where your prowess and decisions ripple through a blockchain-backed universe, pioneering a gaming experience where every victory is recorded, every asset is truly yours, and every quest advances not just your story, but the blockchain itself.
                 </div>
                 <img
                   src={require('@/assets/home/tokenMedal.png')}
